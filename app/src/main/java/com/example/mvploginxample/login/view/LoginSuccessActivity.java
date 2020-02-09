@@ -2,7 +2,6 @@ package com.example.mvploginxample.login.view;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -41,7 +40,7 @@ public class LoginSuccessActivity extends AppCompatActivity {
     private void event() {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        if(bundle==null) return;
+        if (bundle == null) return;
         User user = (User) bundle.getSerializable(KEY.USER);
         assert user != null;
 

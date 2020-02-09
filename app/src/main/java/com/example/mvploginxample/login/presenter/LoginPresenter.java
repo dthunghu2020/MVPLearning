@@ -1,7 +1,5 @@
 package com.example.mvploginxample.login.presenter;
 
-import android.util.Log;
-
 import androidx.annotation.NonNull;
 
 import com.example.mvploginxample.login.api.ApiService;
@@ -17,6 +15,7 @@ import retrofit2.Response;
 public class LoginPresenter {
 
 
+    private static final int REQUEST_CODE = 200;
     private ILoginPresenter loginPresenter;
 
     public LoginPresenter(ILoginPresenter loginView) {
@@ -38,19 +37,24 @@ public class LoginPresenter {
     private void checkDataRequestAPI(String useName, String usePass, String useID) {
         ApiService mApiService = ApiUtils.postLoginService();
         //"MB-0034", "1", "hosco"
-        DataPostRequest dataPostRequest = new DataPostRequest(useName,usePass,useID, "", "");
+        DataPostRequest dataPostRequest = new DataPostRequest(useName, usePass, useID, "", "");
         Call<UserResponse> call = mApiService.getData(dataPostRequest);
         call.enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(@NonNull Call<UserResponse> call, @NonNull Response<UserResponse> response) {
-                if (response.code() == 200) {
+                if (response.code() == REQUEST_CODE) {
                     if (response.body() != null) {
-                        //Xử lí khi response trả về thành
-                        User mUser = response.body().getData().getUser();
-                        loginPresenter.onLoginSuccess("Đăng nhập thành công!", mUser);
-                    } else
-                        //Response.body() null
-                        loginPresenter.onLoginFail("Đăng nhập không thành công!");
+                        if (response.body().getData() != null) {
+                            //Xử lí khi response trả về thành công!
+                            User mUser = response.body().getData().getUser();
+                            if (mUser != null) {
+                                loginPresenter.onLoginSuccess( mUser);
+                            } else
+                                loginPresenter.onLoginFail("Đăng nhập không thành công!");
+                        }else {
+                            loginPresenter.onLoginFail("Đăng nhập không thành công!");
+                        }
+                    }
                 } else
                     //Response.code() != 200
                     loginPresenter.onLoginFail("Đăng nhập không thành công!");

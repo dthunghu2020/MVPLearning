@@ -1,7 +1,5 @@
 package com.example.mvploginxample.login.view;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,13 +8,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.mvploginxample.R;
 import com.example.mvploginxample.login.KEY;
 import com.example.mvploginxample.login.model.User;
-import com.example.mvploginxample.login.presenter.LoginPresenter;
 import com.example.mvploginxample.login.presenter.ILoginPresenter;
-
-import java.io.Serializable;
+import com.example.mvploginxample.login.presenter.LoginPresenter;
 
 public class MainActivity extends AppCompatActivity implements ILoginPresenter {
 
@@ -68,8 +66,9 @@ public class MainActivity extends AppCompatActivity implements ILoginPresenter {
     }
 
     @Override
-    public void onLoginSuccess(String messageSuccess, User user) {
-        Toast.makeText(this, messageSuccess, Toast.LENGTH_SHORT).show();
+    public void onLoginSuccess( User user) {
+        //ko ai cho m viết text trong đây, thông báo cho hết vào string.xml ko lao m sửa sml
+        Toast.makeText(this, getString(R.string.login_success), Toast.LENGTH_SHORT).show();
         Bundle bundle = new Bundle();
         Intent intent = new Intent(MainActivity.this, LoginSuccessActivity.class);
         bundle.putSerializable(KEY.USER, user);

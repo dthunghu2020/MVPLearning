@@ -5,4 +5,5 @@
     <string name="pass">Mật khẩu</string>
     <string name="forgot">Quên mật khẩu</string>
     <string name="login">Đăng nhập</string>
+    <string name="login_success">Đăng nhập thành công!</string>
 </resources>
