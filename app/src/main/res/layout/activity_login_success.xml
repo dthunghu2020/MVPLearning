@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_backgroud"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/imgUser"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:src="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/txtLSUserName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:hint="username"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/txtLSUserFirstName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:hint="firstname"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/txtLSUserLastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:hint="lastname"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/txtLSUserEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:hint="email"
+        android:textSize="16sp" />
+
+</LinearLayout>
